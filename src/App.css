@@ -1168,6 +1168,12 @@ a:hover {
   pointer-events: none;
 }
 
+.trip-option.selected .input-icon img {
+    filter: brightness(0) saturate(100%)
+            invert(23%) sepia(65%) saturate(2500%)
+            hue-rotate(315deg) brightness(85%) contrast(95%);
+}
+
 .form-control {
   display: block;
   width: 100%;
@@ -3678,11 +3684,16 @@ a:hover {
   background: #fce8e6;
 }
 .bf-btn-issue {
-  background: #1a73e8;
+  background: linear-gradient(
+    125deg,
+    #1a1a2e 0%,
+    #16213e 65%,
+    #233b5d 100%
+  );
   color: #fff;
 }
 .bf-btn-issue:hover {
-  background: #1557b0;
+  background: linear-gradient(125deg, #252545 0%, #1c2d50 65%, #31547d 100%);;
 }
 
 /* ═══════════════════════════════════════
@@ -4285,20 +4296,27 @@ a:hover {
     width: 100%;
     padding: 13px 20px;
     color: #fff;
-    background: #e94560;
+    background: linear-gradient(
+    125deg,
+    #1a1a2e 0%,
+    #16213e 65%,
+    #233b5d 100%
+  );    /*  #e94560;    */
     border: none;
     border-radius: 12px;
     font-family: "DM Sans", sans-serif;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(233, 69, 96, 0.32);
+    /* box-shadow: 0 6px 18px rgba(233, 69, 96, 0.32); */
+    box-shadow: 0 6px 18px rgb(0 22 100 / 32%);
     transition: background 0.2s ease, transform 0.2s ease,
       box-shadow 0.2s ease;
   }
 
   .mobile-filter-toggle:hover {
-    background: #d83450;
+    /* background: #d83450; */
+    background: linear-gradient(125deg, #252545 0%, #1c2d50 65%, #31547d 100%);
     transform: translateY(-1px);
     box-shadow: 0 10px 24px rgba(233, 69, 96, 0.42);
   }
@@ -4392,8 +4410,13 @@ a:hover {
     height: 36px;
     border: 1px solid #e2e8f0;
     border-radius: 9px;
-    background: #fff;
-    color: #475569;
+    background: linear-gradient(
+    125deg,
+    #1a1a2e 0%,
+    #16213e 65%,
+    #233b5d 100%
+  );
+    color: #fff;
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease,
       color 0.2s ease, transform 0.15s ease;
@@ -4433,14 +4456,20 @@ a:hover {
     margin: 22px 22px 26px;
     padding: 14px;
     color: #fff;
-    background: #e94560;
+    background: linear-gradient(
+      125deg,
+      #1a1a2e 0%,
+      #16213e 65%,
+      #233b5d 100%
+    );
     border: none;
     border-radius: 11px;
     font-family: "DM Sans", sans-serif;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(233, 69, 96, 0.3);
+    /* box-shadow: 0 6px 16px rgba(233, 69, 96, 0.3); */
+    box-shadow: 0 6px 16px rgb(69 107 215 / 30%);
     transition: background 0.2s ease, transform 0.2s ease;
   }
 
@@ -4487,7 +4516,12 @@ a:hover {
     padding: 9px 14px;
     border: none;
     border-radius: 6px;
-    background: #2563eb;
+    background: linear-gradient(
+    125deg,
+    #1a1a2e 0%,
+    #16213e 65%,
+    #233b5d 100%
+  );
     color: white;
     font-size: 13px;
     cursor: pointer;
@@ -4554,7 +4588,7 @@ a:hover {
 
   .bf-summary-mobile-header button {
     border: none;
-    background: #010058ed;
+    background: linear-gradient(125deg, #252545 0%, #1c2d50 65%, #31547d 100%);
     border-radius: 50%;
     width: 35px;
     height: 35px;
