@@ -4,10 +4,11 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const GetAirlineNames = ({
   airlineCodes = [],
+  selectedAirlines = [],
   onSelectionChange,
 }) => {
   const [airlines, setAirlines] = useState([]);
-  const [selectedAirlines, setSelectedAirlines] = useState([]);
+  // const [selectedAirlines, setSelectedAirlines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -54,17 +55,25 @@ const GetAirlineNames = ({
     fetchAirlines();
   }, [airlineCodes]);
 
+  // const handleAirlineChange = (code) => {
+  //   setSelectedAirlines((previous) => {
+  //     const updated = previous.includes(code)
+  //       ? previous.filter((item) => item !== code)
+  //       : [...previous, code];
+
+  //     onSelectionChange?.(updated);
+
+  //     return updated;
+  //   });
+  // };
+
   const handleAirlineChange = (code) => {
-    setSelectedAirlines((previous) => {
-      const updated = previous.includes(code)
-        ? previous.filter((item) => item !== code)
-        : [...previous, code];
+  const updated = selectedAirlines.includes(code)
+    ? selectedAirlines.filter((item) => item !== code)
+    : [...selectedAirlines, code];
 
-      onSelectionChange?.(updated);
-
-      return updated;
-    });
-  };
+  onSelectionChange?.(updated);
+};
 
   if (loading) {
     return <p>Loading airlines...</p>;
