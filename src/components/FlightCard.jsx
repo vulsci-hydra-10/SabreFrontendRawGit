@@ -2,14 +2,15 @@ import { useState, useEffect, Fragment } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Keep this URL aligned with your Express API.
-const AIRLINES_API_URL = "https://sabrebackend.onrender.com/api/airlines";
+const API_URL = `${import.meta.env.VITE_API_URL}/airlines`;
+// const AIRLINES_API_URL = "https://sabrebackend.onrender.com/api/airlines";
 
 // Cache the airline lookup so every flight card does not make its own request.
 let airlineLogoMapPromise;
 
 function getAirlineLogoMap() {
   if (!airlineLogoMapPromise) {
-    airlineLogoMapPromise = fetch(AIRLINES_API_URL)
+    airlineLogoMapPromise = fetch(API_URL)
       .then((response) => {
         if (!response.ok) throw new Error("Could not load airline logos");
         return response.json();
