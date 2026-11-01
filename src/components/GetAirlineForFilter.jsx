@@ -1,5 +1,6 @@
-
 import React, { useEffect, useState } from "react";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 const GetAirlineNames = ({
   airlineCodes = [],
@@ -22,7 +23,7 @@ const GetAirlineNames = ({
         setError("");
 
         const response = await fetch(
-          "/api/airlines/filterCareer",
+          `${API_URL}/airlines/filterCareer`,
           {
             method: "POST",
             headers: {

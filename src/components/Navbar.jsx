@@ -40,14 +40,14 @@ function Navbar() {
               Search
             </NavLink>
 
-            <NavLink
+            {/* <NavLink
               to="/dashboard"
               className={({ isActive }) =>
                 `navbar-link${isActive ? " active" : ""}`
               }
             >
               Test
-            </NavLink>
+            </NavLink> */}
 
             <button
               type="button"
