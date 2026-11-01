@@ -152,12 +152,14 @@ function BookingForm() {
     }))
   );
 
+  //  STATES FOR CONTACT INFO, TERMS CHECKBOX, FLIGHT SUMMARY FOR MOBILE DEVICES AND WALLET
   const [emails, setEmails] = useState(["agent1@example.com"]);
   const [contactNumber, setContactNumber] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [address, setAddress] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [walletBalance, setWalletBalance] = useState(50000);
+  const [showFlightSummary, setShowFlightSummary] = useState(false);
 
   /* ── Updaters ── */
   const updatePax = (idx, field, value) => {
@@ -246,6 +248,13 @@ function BookingForm() {
                 {/* <span className="bf-topbar-route">
                 {firstSeg.departureAirport || "—"} → {lastSeg.arrivalAirport || "—"}
                 </span> */}
+                <button
+                  className="bf-summary-toggle"
+                  onClick={() => setShowFlightSummary(true)}
+                  type="button"
+                >
+                  Flight Summary
+                </button>
             </div>
 
                 <div className="bf-body">
@@ -399,7 +408,20 @@ function BookingForm() {
                     {/* ════════ RIGHT SIDEBAR ════════ */}
                     <div className="bf-sidebar">
                     {/* ── Flight summary ── */}
-                    <div className="bf-summary-card">
+                    {/* <div className="bf-summary-card"> */}
+                        <div className={`bf-summary-card ${showFlightSummary ? "bf-summary-open" : ""}`}>
+
+                            <div className="bf-summary-mobile-header">
+                              {/* <h3>Flight Summary</h3> */}
+
+                              <button
+                                type="button"
+                                onClick={() => setShowFlightSummary(false)}
+                              >
+                                ✕
+                              </button>
+                            </div>
+
                         <div className="bf-summary-title">Flight Summary</div>
                         <div className="bf-summary-row">
                         {/* <span>Route</span>
