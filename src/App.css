@@ -4567,6 +4567,10 @@ a:hover {
 /* FLIGHT SEARCH EDIT FORM RESPONSIVE */
 @media (max-width: 768px) {
 
+  .fc-bag-row {
+    gap: 30px;
+  }
+
     .sm-modal {
         position: fixed !important;
 
