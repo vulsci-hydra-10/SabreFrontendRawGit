@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import SearchModal from "../components/SearchModal";
@@ -6,6 +6,7 @@ import "../HeroCloudyAnim.css";
 
 function HeroCloudyAnim({ searchParams }) {
     const navigate = useNavigate();
+    const location = useLocation();
     const [modalOpen, setModalOpen] = useState(false);
 
     const origin = searchParams?.origin || "Origin";
@@ -109,18 +110,20 @@ function HeroCloudyAnim({ searchParams }) {
                     </div>
 
                     <div className="action-nd-step">
+                        {location.pathname !== "/results" && (
                         <button
                             className="results-edit-search"
                             onClick={() => setModalOpen(true)}
                         >
                             <span>✎</span> Edit Search
                         </button>
+                        )}
 
-                        <div className="results-breadcrumb">
+                        {/* <div className="results-breadcrumb">
                             <Link to="/">Home</Link>
                             <span>/</span>
                             <span>Flight Results</span>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
