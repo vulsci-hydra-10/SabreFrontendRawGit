@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Keep this URL aligned with your Express API.
-const AIRLINES_API_URL = "http://localhost:5000/api/airlines";
+const AIRLINES_API_URL = "https://sabrebackend.onrender.com/api/airlines";
 
 // Cache the airline lookup so every flight card does not make its own request.
 let airlineLogoMapPromise;
