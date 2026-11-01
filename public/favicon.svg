@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <!-- Left Wing Face -->
+    <linearGradient id="wingLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+
+    <!-- Right Wing Face -->
+    <linearGradient id="wingRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+
+    <!-- Center Spine Highlight -->
+    <linearGradient id="wingSpine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#7DD3FC" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Main Wing -->
+  <polygon points="32,4 6,50 24,42 32,24" fill="url(#wingLeft)" />
+
+  <!-- Right Main Wing -->
+  <polygon points="32,4 58,50 40,42 32,24" fill="url(#wingRight)" />
+
+  <!-- Center Cockpit / Nose Spine -->
+  <polygon points="32,4 36,28 32,60 28,28" fill="url(#wingSpine)" />
+</svg>

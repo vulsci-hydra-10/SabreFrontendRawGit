@@ -1,0 +1,441 @@
+/* =================================
+   DARK SKY FLIGHT HERO
+================================= */
+
+.results-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #050b1a;
+  color: #f8fafc;
+  min-height: 520px;
+  padding: 0px 0px 10px 0px;
+}
+
+/* Keep content above the animation */
+.results-hero > :not(.sky-animation) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sky background */
+.sky-animation {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 75% 15%,
+      rgba(44, 87, 161, 0.28),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 15% 45%,
+      rgba(41, 67, 126, 0.2),
+      transparent 45%
+    ),
+    linear-gradient(
+      180deg,
+      #030712 0%,
+      #0a1630 42%,
+      #13294a 75%,
+      #1b3554 100%
+    );
+}
+
+/* Twinkling stars */
+.sky-stars {
+  position: absolute;
+  inset: 0;
+}
+
+.sky-star {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: #e0f2fe;
+  box-shadow: 0 0 8px rgba(147, 197, 253, 0.8);
+  animation: twinkle 3s ease-in-out var(--delay) infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+/* Moon-like ambient glow */
+.moon-glow {
+  position: absolute;
+  top: 55px;
+  right: 14%;
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(191, 219, 254, 0.2) 0%,
+    rgba(96, 165, 250, 0.08) 42%,
+    transparent 72%
+  );
+  filter: blur(4px);
+}
+
+/* Moving cloud layers */
+.cloud-layer {
+  position: absolute;
+  left: -50%;
+  width: 200%;
+  height: 190px;
+  display: flex;
+  align-items: center;
+}
+
+.cloud-layer-back {
+  top: 35%;
+  opacity: 0.48;
+  animation: clouds-drift 75s linear infinite;
+}
+
+.cloud-layer-front {
+  top: 60%;
+  opacity: 0.8;
+  animation: clouds-drift 48s linear infinite reverse;
+}
+
+/* Cloud shapes made only with CSS */
+.cloud {
+  position: absolute;
+  width: 220px;
+  height: 65px;
+  border-radius: 100px;
+  background: linear-gradient(
+    180deg,
+    rgba(148, 178, 213, 0.25),
+    rgba(48, 75, 112, 0.14)
+  );
+  filter: blur(2px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.cloud::before {
+  left: 30px;
+  width: 95px;
+  height: 95px;
+}
+
+.cloud::after {
+  left: 100px;
+  width: 75px;
+  height: 75px;
+}
+
+.cloud-one {
+  left: 5%;
+  transform: scale(1.2);
+}
+
+.cloud-two {
+  left: 40%;
+  transform: scale(0.8);
+}
+
+.cloud-three {
+  left: 75%;
+  transform: scale(1.5);
+}
+
+.cloud-four {
+  left: 15%;
+  transform: scale(1.8);
+  background: linear-gradient(
+    180deg,
+    rgba(191, 219, 254, 0.3),
+    rgba(71, 100, 139, 0.24)
+  );
+}
+
+.cloud-five {
+  left: 50%;
+  transform: scale(1.4);
+}
+
+.cloud-six {
+  left: 85%;
+  transform: scale(1.7);
+}
+
+@keyframes clouds-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(25%);
+  }
+}
+
+/* Container for all flying planes */
+.air-traffic {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Individual flight paths */
+.flight-path {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  will-change: transform;
+}
+
+/* Shared plane style */
+.flying-plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  font-size: 32px;
+  line-height: 1;
+  color: #e0f2fe;
+  filter:
+    drop-shadow(0 0 7px rgba(125, 211, 252, 0.9))
+    drop-shadow(0 0 16px rgba(59, 130, 246, 0.5));
+  animation: plane-bob 3s ease-in-out infinite;
+}
+
+/* Contrails */
+.flight-trail {
+  position: absolute;
+  top: 15px;
+  left: -145px;
+  width: 130px;
+  height: 2px;
+  opacity: 0.7;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(125, 211, 252, 0.8)
+  );
+  filter: blur(1px);
+}
+
+/* Plane 1: left -> right */
+.plane-one {
+  top: 24%;
+  animation: fly-right 18s linear -8s infinite;
+}
+
+/* Plane 2: right -> left */
+.plane-two {
+  top: 38%;
+  animation: fly-left 23s linear -15s infinite;
+}
+
+.plane-two .flying-plane {
+  transform: rotate(180deg);
+}
+
+.plane-two .flight-trail {
+  left: 45px;
+  background: linear-gradient(
+    90deg,
+    rgba(125, 211, 252, 0.8),
+    transparent
+  );
+}
+
+/* Plane 3: left -> right, smaller and higher */
+.plane-three {
+  top: 13%;
+  animation: fly-right 27s linear -20s infinite;
+}
+
+.plane-three .flying-plane {
+  font-size: 22px;
+  opacity: 0.75;
+}
+
+/* Plane 4: right -> left, lower altitude */
+.plane-four {
+  top: 52%;
+  animation: fly-left 20s linear -5s infinite;
+}
+
+.plane-four .flying-plane {
+  font-size: 26px;
+  transform: rotate(180deg);
+  opacity: 0.85;
+}
+
+.plane-four .flight-trail {
+  left: 40px;
+  background: linear-gradient(
+    90deg,
+    rgba(125, 211, 252, 0.65),
+    transparent
+  );
+}
+
+/* Plane 5: another crossing flight */
+.plane-five {
+  top: 31%;
+  animation: fly-right 31s linear -25s infinite;
+}
+
+.plane-five .flying-plane {
+  font-size: 19px;
+  opacity: 0.65;
+}
+
+/* Opposite directions */
+@keyframes fly-right {
+  from {
+    transform: translateX(-180px);
+  }
+
+  to {
+    transform: translateX(calc(100vw + 180px));
+  }
+}
+
+@keyframes fly-left {
+  from {
+    transform: translateX(calc(100vw + 180px));
+  }
+
+  to {
+    transform: translateX(-180px);
+  }
+}
+
+/* Gentle movement in the air */
+@keyframes plane-bob {
+  0%, 100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -5px;
+  }
+}
+
+
+/* Soft fade at the bottom */
+.sky-horizon {
+  position: absolute;
+  inset: auto 0 0;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(3, 7, 18, 0.48)
+  );
+}
+
+/* Responsive adjustments */
+/* @media (max-width: 768px) {
+  .results-hero {
+    min-height: 600px;
+  }
+
+  .moon-glow {
+    right: 8%;
+    width: 100px;
+    height: 100px;
+  }
+
+  .cloud {
+    transform-origin: center;
+    opacity: 0.8;
+  }
+
+  .flying-plane {
+    font-size: 27px;
+  }
+
+  .cloud-layer-back {
+    top: 30%;
+  }
+
+  .cloud-layer-front {
+    top: 65%;
+  }
+} */
+
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .flying-plane {
+    font-size: 24px;
+  }
+
+  .plane-three .flying-plane,
+  .plane-five .flying-plane {
+    font-size: 17px;
+  }
+
+  .flight-trail {
+    width: 80px;
+    left: -90px;
+  }
+}
+
+/* Accessibility: respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .sky-star,
+  .cloud-layer,
+  .flight-path,
+  .flying-plane {
+    animation: none !important;
+  }
+}
+
+/* @media (prefers-reduced-motion: reduce) {
+  .flight-path,
+  .flying-plane {
+    animation-play-state: paused;
+  } */
+
+
+
+/* ── Return sector ── */
+.route-summary-return {
+    opacity: 0.92;
+}
+
+.route-summary-return .route-visual .route-type {
+    /* Optional: slightly different accent for the return label */
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Day name next to date ── */
+.route-detail-day {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 2px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
