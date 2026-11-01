@@ -110,7 +110,7 @@ function HeroCloudyAnim({ searchParams }) {
                     </div>
 
                     <div className="action-nd-step">
-                        {location.pathname !== "/results" && (
+                        {location.pathname !== "/booking" && (
                         <button
                             className="results-edit-search"
                             onClick={() => setModalOpen(true)}
